@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Header from './Header'
 
 function App() {
+  const [counter, setCounter] = useState(0)
+
   return (
-    <h1>hello World</h1>
-  );
+    <div>
+      <header>Contador: {counter}</header>
+      <button onClick={() => setCounter(counter + 1)}>Incrementar</button>
+    </div>
+  )
 }
 
 export default App;
