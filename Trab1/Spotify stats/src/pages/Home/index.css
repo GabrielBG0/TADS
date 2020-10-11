@@ -1,0 +1,53 @@
+.usable-area {
+  display: flex;
+  height: 95vh;
+}
+
+.left-menu {
+  border-right: var(--border);
+  height: 100%;
+  flex: 1;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  width: 100%;
+  flex: 6;
+  margin-top: 3vh;
+}
+
+.home h1 {
+  color: #1db954;
+}
+
+.home p {
+  color: var(--text-color);
+}
+
+.home button {
+  width: 120px;
+  height: 30px;
+  background: #1db954;
+  border: 0;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  margin-top: 16px;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 20px;
+  margin: auto;
+  margin-left: 10px;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
