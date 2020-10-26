@@ -3,20 +3,24 @@ const connection = require('../Database/connection')
 module.exports = {
     async create(request, response) {
 
-        const { rga, nome, curso } = request.body
+        const { nome, rga, curso } = request.body
 
         try {
-            await connecton('Aula').insert({
+            await connection('aluno').insert({
                 rga,
                 nome,
                 curso
             })
+            return response.json({ nome: nome, rga: rga, curso: curso })
         } catch (e) {
             return response.status(400).send('parâmetros inválidos')
         }
     },
     async get(request, response) {
         const { limite, pagina, nome } = request.query
+
+        const limiteInt = parseInt(limite)
+        const paginaInt = parseInt(pagina)
 
         try {
             if (nome) {
@@ -27,19 +31,20 @@ module.exports = {
             const alunos = await connection('aluno').select('*')
 
             if (limite && pagina) {
-                return response.json(alunos.slice((limite * pagina), limite))
+                return response.json(alunos.slice((limiteInt * paginaInt - limiteInt), (limiteInt + ((limiteInt * paginaInt) - limiteInt))))
 
             } else if (limite && !pagina) {
-                return response.json(alunos.slice(0, limite))
+                return response.json(alunos.slice(0, limiteInt))
 
             } else if (!limite && pagina) {
-                return response.json(alunos.json((25 * pagina), 25))
+                return response.json(alunos.slice((25 * paginaInt - 25), (25 + ((25 * paginaInt)) - 25)))
 
             }
 
             return response.json(alunos.slice(0, 25))
 
         } catch (e) {
+            console.log(e)
             return response.status(400).send('parâmetros inválidos')
         }
     },
