@@ -1,4 +1,4 @@
-import connection from '../Database/connection'
+const connection = require('../Database/connection')
 
 module.exports = {
     async create(request, response) {

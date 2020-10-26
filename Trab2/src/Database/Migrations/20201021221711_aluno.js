@@ -5,7 +5,7 @@ exports.up = function (knex) {
         table.increments()
         table.string('nome').notNullable()
         table.string('rga').notNullable()
-        table.string('curso').notNullable()
+        table.string('curso')
     })
 };
 
